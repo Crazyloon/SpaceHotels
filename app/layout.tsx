@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { inter } from "./fonts/fonts";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Spatium Space Hotel",

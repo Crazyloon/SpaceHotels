@@ -1,9 +1,7 @@
 "use client";
 
-import { Permanent_Marker } from "next/font/google";
 import HomePageBookingForm from "./ui/form/homepage-booking-form";
-
-const perma = Permanent_Marker({ weight: "400", subsets: ["latin"] });
+import { perma } from "./fonts/fonts";
 
 export default function Home() {
   return (

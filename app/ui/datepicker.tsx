@@ -1,20 +1,19 @@
 "use client";
 
-import { Montagu_Slab } from "next/font/google";
 import { useRef, useState } from "react";
 import { format } from "date-fns";
 import { DayPicker, DateRange } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { useOutsideAlerter } from "./hooks/use-outside-alerter";
+import { useOutsideClickHandler } from "./hooks/use-outside-click-handler";
 import OutlineButton from "./components/outline-button";
+import { montagu } from "../fonts/fonts";
 
-const monagu = Montagu_Slab({ weight: "400", subsets: ["latin"] });
 const FormattedDate = (dateRange: DateRange | undefined) => {
   return dateRange ? (
     <>
       {dateRange.from ? (
         <>
-          <span className={`text-3xl ${monagu.className}`}>
+          <span className={`text-3xl ${montagu.className}`}>
             {format(dateRange?.from, "d")}
           </span>
           <span className="leading-8">{format(dateRange?.from, "LLL")}</span>
@@ -25,7 +24,7 @@ const FormattedDate = (dateRange: DateRange | undefined) => {
       <span className="mx-2 leading-8">to</span>
       {dateRange.to ? (
         <>
-          <span className={`text-3xl ${monagu.className}`}>
+          <span className={`text-3xl ${montagu.className}`}>
             {format(dateRange?.to, "d")}
           </span>
           <span className="leading-8">{format(dateRange?.to, "LLL")}</span>
@@ -56,7 +55,7 @@ const DateRangePicker = ({
       setIsVisible(false);
     }
   }
-  useOutsideAlerter(handleClickOutside);
+  useOutsideClickHandler(handleClickOutside);
 
   return (
     <>

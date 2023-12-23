@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 
-function useOutsideAlerter(handleClickOutside: (event: MouseEvent) => void) {
+function useOutsideClickHandler(
+  handleClickOutside: (event: MouseEvent) => void
+) {
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -9,4 +11,4 @@ function useOutsideAlerter(handleClickOutside: (event: MouseEvent) => void) {
   });
 }
 
-export { useOutsideAlerter };
+export { useOutsideClickHandler };

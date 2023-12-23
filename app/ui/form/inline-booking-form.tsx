@@ -1,17 +1,24 @@
 import OutlineButton from "../components/outline-button";
 
 const FormStepClasses =
-  "min-h-32 min-w-60 relative flex flex-col items-center justify-between p-4";
-const triangleClasses = "after:border-l-space-700 after:absolute after:left-full after:h-0 after:w-0 after:border-y-[20px] after:border-l-[12px] after:border-r-0 after:border-solid after:border-y-transparent after:content-['']";
+  "min-h-32 min-w-60 relative flex flex-col items-center p-4";
+const triangleClasses =
+  "after:border-l-space-700 after:absolute after:left-full after:h-0 after:w-0 after:border-y-[20px] after:border-l-[12px] after:border-r-0 after:border-solid after:border-y-transparent after:content-[''] after:-mt-4 after:top-1/2 after:-translate-y-1";
 
 const InlineBookingForm = ({
   children,
   className,
+  handleSubmit,
 }: {
   children: JSX.Element[];
   className?: string;
+  handleSubmit?: React.FormEventHandler<HTMLFormElement>;
 }) => {
-  return <form className={`flex ${className}`}>{...children}</form>;
+  return (
+    <form onSubmit={handleSubmit} className={`flex ${className}`}>
+      {...children}
+    </form>
+  );
 };
 
 const InlineBookingFormStep = ({
@@ -27,10 +34,8 @@ const InlineBookingFormStep = ({
 }) => {
   return (
     <div
-      className={`bg-space-700 relative ${FormStepClasses} ${
-        showTriangle
-          ? "after:border-l-space-700 after:absolute after:left-full after:h-0 after:w-0 after:border-y-[20px] after:border-l-[12px] after:border-r-0 after:border-solid after:border-y-transparent after:content-['']"
-          : ""
+      className={`bg-space-700 relative justify-between ${FormStepClasses} ${
+        showTriangle ? `${triangleClasses}` : ""
       }`}
     >
       <div className="flex gap-4">
@@ -46,8 +51,14 @@ const InlineBookingFormSubmission = () => {
   const c = () => console.log("test");
 
   return (
-    <div className={`bg-space-100 -z-10 ${FormStepClasses}`}>
-      <OutlineButton type="submit" className="uppercase" handleClick={c}>
+    <div
+      className={`${FormStepClasses} bg-space-100 p-0 -z-10 h-full justify-center`}
+    >
+      <OutlineButton
+        type="submit"
+        className="uppercase h-full items-center"
+        handleClick={c}
+      >
         Find a Room
       </OutlineButton>
     </div>

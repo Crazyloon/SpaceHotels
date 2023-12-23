@@ -11,6 +11,7 @@ import { addDays, setDate } from "date-fns";
 import { SetStateAction, useState } from "react";
 import { DateRange, DayPicker } from "react-day-picker";
 import OutlineButton from "../components/outline-button";
+import NumberPicker from "../components/number-picker";
 
 const RangePickerHeading = () => {
   return (
@@ -32,7 +33,10 @@ export default function HomePageBookingForm() {
 
   return (
     <aside className="absolute flex w-full -translate-y-80 justify-center">
-      <InlineBookingForm className="shadow-space-950/60 z-10 shadow-lg">
+      <InlineBookingForm
+        handleSubmit={() => {}}
+        className="shadow-space-950/60 z-10 shadow-lg"
+      >
         <InlineBookingFormStep
           heading={<RangePickerHeading />}
           input={
@@ -54,38 +58,17 @@ export default function HomePageBookingForm() {
         <InlineBookingFormStep
           icon={<FontAwesomeIcon icon={faPerson} />}
           heading="Adults"
-          input={
-            <OutlineButton>
-              <>
-                <span className="text-3xl">{adults}</span>{" "}
-                <span className="ml-2 leading-8">Adults</span>
-              </>
-            </OutlineButton>
-          }
+          input={<NumberPicker value={adults} setValue={setAdults} />}
         />
         <InlineBookingFormStep
           icon={<FontAwesomeIcon icon={faChild} />}
           heading="Children"
-          input={
-            <OutlineButton>
-              <>
-                <span className="text-3xl">{kids}</span>{" "}
-                <span className="ml-2 leading-8">Children</span>
-              </>
-            </OutlineButton>
-          }
+          input={<NumberPicker value={kids} setValue={setKids} />}
         />
         <InlineBookingFormStep
           icon={<FontAwesomeIcon icon={faKey} />}
           heading="Rooms"
-          input={
-            <OutlineButton>
-              <>
-                <span className="text-3xl">{rooms}</span>{" "}
-                <span className="ml-2 leading-8">Rooms</span>
-              </>
-            </OutlineButton>
-          }
+          input={<NumberPicker value={rooms} setValue={setRooms} />}
           showTriangle
         />
         <InlineBookingFormSubmission />
