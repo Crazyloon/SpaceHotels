@@ -48,17 +48,11 @@ const InlineBookingFormStep = ({
 };
 
 const InlineBookingFormSubmission = () => {
-  const c = () => console.log("test");
-
   return (
     <div
-      className={`${FormStepClasses} bg-space-100 p-0 -z-10 h-full justify-center`}
+      className={`${FormStepClasses} bg-space-100 -z-10 h-full justify-center p-0`}
     >
-      <OutlineButton
-        type="submit"
-        className="uppercase h-full items-center"
-        handleClick={c}
-      >
+      <OutlineButton type="submit" className="h-full items-center uppercase">
         Find a Room
       </OutlineButton>
     </div>

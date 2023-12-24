@@ -50,7 +50,9 @@ const DateRangePicker = ({
   setDateRange: React.Dispatch<React.SetStateAction<DateRange | undefined>>;
 }) => {
   const btnRef = useRef<any>(null);
-  function handleClickOutside(event: MouseEvent) {
+  function handleClickOutside(
+    event: MouseEvent | FocusEvent | KeyboardEvent | TouchEvent,
+  ) {
     if (btnRef.current && !btnRef.current.contains(event.target)) {
       setIsVisible(false);
     }

@@ -7,17 +7,19 @@ import {
 import { faCalendarDays } from "@fortawesome/free-regular-svg-icons";
 import { faChild, faKey, faPerson } from "@fortawesome/free-solid-svg-icons";
 import { DateRangePicker, ShowDateButton } from "../datepicker";
-import { addDays, setDate } from "date-fns";
-import { SetStateAction, useState } from "react";
-import { DateRange, DayPicker } from "react-day-picker";
-import OutlineButton from "../components/outline-button";
+import { addDays } from "date-fns";
+import { useState } from "react";
+import { DateRange } from "react-day-picker";
 import NumberPicker from "../components/number-picker";
 
 const RangePickerHeading = () => {
   return (
-    <div className="flex items-center justify-center gap-4">
+    <label
+      htmlFor="date-range"
+      className="flex items-center justify-center gap-4"
+    >
       <FontAwesomeIcon icon={faCalendarDays} /> <span>Arrival / Departure</span>
-    </div>
+    </label>
   );
 };
 
@@ -34,7 +36,10 @@ export default function HomePageBookingForm() {
   return (
     <aside className="absolute flex w-full -translate-y-80 justify-center">
       <InlineBookingForm
-        handleSubmit={() => {}}
+        handleSubmit={(e) => {
+          e.preventDefault();
+          console.log({ ...dateRange, adults, kids, rooms });
+        }}
         className="shadow-space-950/60 z-10 shadow-lg"
       >
         <InlineBookingFormStep
